@@ -1,0 +1,30 @@
+extend ./layouts/layout.pug
+
+block page-specific-meta
+    title GrocApp Home
+
+block page-content
+    include ./partials/header
+    #list-creation(
+        class="d-flex justify-content-center p-5"
+    )
+        a(
+            href="/lists/create"
+            class="btn btn-primary col-md-2"
+        ) Create List  
+    #display-lists-container(
+        class="d-flex justify-content-center"
+    )
+        #display-lists(
+            class="d-flex flex-column col-md-6"
+        )
+            if grocerylists
+                each list in grocerylists
+                    .list-container
+                        h3 
+                            a(href="/lists/"+list.list_number) #{list.title}
+                        
+                else
+                    h2 No public grocery lists found. Feel free to start one!
+            else
+                h2 No public grocery lists found. Feel free to start one!

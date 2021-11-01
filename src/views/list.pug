@@ -1,0 +1,27 @@
+extend ./layouts/layout.pug
+
+block page-specific-meta
+    title #{grocerylist.name}
+
+block page-content
+    include ./partials/header
+    #list-container(
+        class="d-flex justify-content-center"
+    )
+        #list(
+            class="col-md-6"
+        )
+            h3 #{grocerylist.title}
+            h6 By: #{grocerylist.owner}
+            if grocerylist.content
+                ul
+                    - let items = grocerylist.content.replace('\r', '').split('\n')
+                    each item in items
+                        li #{item}
+            button#delete-list(
+                class="btn btn-danger"
+                onclick=`deleteList(${grocerylist.list_number})`
+            ) Delete
+    script
+        include ../static/deleteList.js
+                

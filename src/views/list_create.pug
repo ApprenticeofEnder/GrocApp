@@ -1,0 +1,36 @@
+extend ./layouts/layout.pug
+
+block page-specific-meta
+    title Create Grocery List
+
+block page-content
+    include ./partials/header
+    #form-holder(
+        class="d-flex justify-content-center"
+    )
+        form#login-form(
+            method="POST"
+            action="/lists"
+            class="p-5 my-5 border col-md-4"
+        )
+            h3 Create your grocery list
+            div(
+                class="d-flex flex-column"
+            )
+                input(
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    class="my-2"
+                )
+                textarea(
+                    name="content"
+                    placeholder="Your Grocery List..."
+                    class="my-2"
+
+                )
+                input(
+                    type="submit"
+                    value="Create"
+                    class="my-2"
+                )

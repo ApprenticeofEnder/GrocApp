@@ -1,0 +1,67 @@
+extend ./layouts/layout.pug
+
+block page-specific-meta
+    title GrocApp Home
+
+block page-content
+    if errors
+        #error-holder(
+            class="d-flex justify-content-center"
+        )
+        each error in errors 
+            p.text-danger #{error}
+    #form-holder(
+        class="d-flex justify-content-center"
+    )
+        form#login-form(
+            method="POST"
+            action="/login"
+            class="p-5 my-5 border col-md-4"
+        )
+            h3 Login
+            div(
+                class="d-flex flex-column"
+            )
+                input(
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    class="my-2"
+                )
+                input(
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    class="my-2"
+                )
+                input(
+                    type="submit"
+                    value="Login"
+                    class="my-2"
+                )
+        form#register-form(
+            method="POST"
+            action="/signup"
+            class="p-5 my-5 border col-md-4"
+        )
+            h3 Register
+            div(
+                class="d-flex flex-column"
+            )
+                input(
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    class="my-2"
+                )
+                input(
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    class="my-2"
+                )
+                input(
+                    type="submit"
+                    value="Register"
+                    class="my-2"
+                )

@@ -1,0 +1,23 @@
+nav(
+    class="navbar navbar-expand-lg navbar-light bg-light"
+)
+    a(
+        class="navbar-brand" 
+        href="/"
+    ) GrocApp
+    #navbarSupportedContent(
+        class="collapse navbar-collapse"
+    )
+        <ul class="navbar-nav mr-auto">
+        if authenticated
+            li.nav-item 
+                span.nav-link Hello #{username}!
+            li.nav-item
+                a.nav-link(
+                    href="/logout"
+                ) Logout
+        else
+            li.nav-item
+                a.nav-link(
+                    href="/login"
+                ) Login
